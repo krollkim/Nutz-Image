@@ -1,0 +1,56 @@
+# ===== dependencies =====
+/node_modules
+/.pnp
+.pnp.js
+.yarn/install-state.gz
+
+# ===== next.js =====
+/.next/
+/out/
+/build
+next-env.d.ts
+
+# ===== production =====
+/dist
+
+# ===== typescript =====
+*.tsbuildinfo
+
+# ===== misc / debug =====
+.DS_Store
+*.pem
+Thumbs.db
+
+# ===== logs =====
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# ===== local env files =====
+.env
+.env*.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# ===== deploy platforms =====
+.vercel
+.netlify
+
+# ===== editor =====
+.idea
+*.swp
+
+# ===== local debug / screenshot artifacts (Playwright spike — not part of the app) =====
+/phase1-verify.js
+/check-certs.js
+/take-cert-screenshots.js
+certs-*.png
+*-visible.png
+/.playwright-mcp/
+
+# ===== local tooling config (Claude Code) =====
+# Ignored by default to keep the repo clean. Remove this line if you want to
+# version-control shared project config under .claude/.
+/.claude/

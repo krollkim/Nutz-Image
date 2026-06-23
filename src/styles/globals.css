@@ -1,0 +1,79 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* --- Core warm palette --- */
+  --color-bg:        #120C06;
+  --color-surface:   #2A1C0E;
+  --color-border:    rgba(212, 162, 78, 0.15);
+  --color-text:      #F0E4CC;
+  --color-muted:     #9A8868;
+  --color-chocolate: #1A1208;
+  --color-chestnut:  #E07B2D;
+  --color-amber:     #D4A24E;
+  --color-power-blue: #4FC3F7;
+  --color-power-gold: #FFD54F;
+  --color-white:     #FFFFFF;
+
+  /* --- New tokens --- */
+  --bg-warm-lift:    #3A2410;
+  --gold:            #D4A24E;
+  --gold-bright:     #F0D9A8;
+  --gold-deep:       #A8701F;
+  --flame:           #E07B2D;
+  --flame-deep:      #B85E1A;
+  --text-cream:      #E8DCC4;
+  --text-faint:      #6E6048;
+  --border-subtle:   rgba(212, 162, 78, 0.12);
+  --border-mid:      rgba(212, 162, 78, 0.25);
+  --border-strong:   rgba(212, 162, 78, 0.40);
+
+  /* --- Gradients --- */
+  --gradient-hero:    radial-gradient(120% 80% at 50% 0%, #4A3115 0%, #2A1C0E 38%, #1A1208 70%, #120C06 100%);
+  --gradient-section: linear-gradient(180deg, #1A1208 0%, #120C06 100%);
+  --gradient-cta:     linear-gradient(135deg, #E89B3E, #B85E1A);
+  --gradient-gold:    linear-gradient(135deg, #D4A24E, #A8701F);
+  --gradient-card:    linear-gradient(160deg, rgba(58, 36, 16, 0.6), rgba(26, 18, 8, 0.4));
+}
+
+html {
+  direction: rtl;
+}
+
+body {
+  background-color: #120C06;
+  color: var(--color-text);
+  font-family: var(--font-rubik), sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ===== Accessibility widget states (toggled on <html>) ===== */
+
+/* High contrast — boost overall contrast across the whole page */
+html.a11y-high-contrast {
+  filter: contrast(1.35) saturate(1.1);
+}
+
+/* Stop animations / motion */
+html.a11y-no-motion *,
+html.a11y-no-motion *::before,
+html.a11y-no-motion *::after {
+  animation-duration: 0.001ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.001ms !important;
+  scroll-behavior: auto !important;
+}
+
+/* Highlight links — underline + outline every link */
+html.a11y-highlight-links a {
+  text-decoration: underline !important;
+  text-underline-offset: 3px;
+  outline: 1px dashed currentColor;
+  outline-offset: 2px;
+}
