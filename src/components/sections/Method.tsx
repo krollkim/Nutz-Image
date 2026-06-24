@@ -36,7 +36,7 @@ export default function Method({ mode = 'teaser' }: MethodProps) {
             <div className="h-[70vh] max-h-96 md:max-h-[70vh] rounded-card overflow-hidden order-2 md:order-1">
               <Image
                 src="/images/exrecises/liav-planch.png"
-                alt="ליאב ברודש מבצע תרגיל פלאנש (Planche) באימון קליסטניקס"
+                alt="ליאב ברודש מבצע תרגיל פלאנץ (Planche) באימון קליסטניקס"
                 width={600}
                 height={400}
                 className="w-full h-full object-cover"
