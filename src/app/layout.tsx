@@ -7,7 +7,9 @@ import FloatingCTA from '@/components/layout/FloatingCTA'
 import AccessibilityWidget from '@/components/layout/AccessibilityWidget'
 import JsonLd from '@/components/seo/JsonLd'
 import { siteGraph } from '@/lib/schema'
-import { SITE_URL, SITE_NAME, SITE_DESCRIPTION } from '@/lib/site'
+import { SITE_URL, SITE_NAME, SITE_DESCRIPTION, absoluteUrl } from '@/lib/site'
+
+const OG_IMAGE = absoluteUrl('/images/og/og-image.jpg')
 
 const rubik = Rubik({
   subsets: ['hebrew', 'latin'],
@@ -29,6 +31,15 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: 'NUTZ Calisthenics',
   description: 'קליסטניקס אונליין עם ליאב ברודש',
+  icons: {
+    icon: [
+      { url: '/favicon/favicon.ico', sizes: 'any' },
+      { url: '/favicon/favicon-32x32.png', type: 'image/png', sizes: '32x32' },
+      { url: '/favicon/favicon-16x16.png', type: 'image/png', sizes: '16x16' },
+    ],
+    apple: '/favicon/apple-touch-icon.png',
+  },
+  manifest: '/favicon/site.webmanifest',
   openGraph: {
     type: 'website',
     locale: 'he_IL',
@@ -38,7 +49,7 @@ export const metadata: Metadata = {
     description: SITE_DESCRIPTION,
     images: [
       {
-        url: '/images/og/og-image.jpg',
+        url: OG_IMAGE,
         width: 1036,
         height: 1168,
         alt: 'NUTZ Calisthenics — לוגו',
@@ -49,7 +60,7 @@ export const metadata: Metadata = {
     card: 'summary',
     title: SITE_NAME,
     description: SITE_DESCRIPTION,
-    images: ['/images/og/og-image.jpg'],
+    images: [OG_IMAGE],
   },
 }
 
