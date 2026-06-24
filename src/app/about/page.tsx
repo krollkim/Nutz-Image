@@ -7,6 +7,7 @@ import ScrollReveal from '@/components/ui/ScrollReveal'
 import { aboutCopy } from '@/data/copy'
 
 export const metadata: Metadata = {
+  alternates: { canonical: '/about' },
   title: 'ליאב ברודש - NUTZ Calisthenics',
   description: '14+ שנות קליסטניקס, 300+ תהליכים באונליין, רקע בספורטתרפיה. הסיפור מאחורי NUTZ.',
 }

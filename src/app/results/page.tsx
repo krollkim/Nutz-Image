@@ -7,6 +7,7 @@ import ScrollReveal from '@/components/ui/ScrollReveal'
 import { resultsCopy } from '@/data/copy'
 
 export const metadata: Metadata = {
+  alternates: { canonical: '/results' },
   title: 'תוצאות - NUTZ Calisthenics',
   description: 'מאפס לעמידת ידיים. ממקום אחרון לראשון. תוצאות אמיתיות ממתאמנים אמיתיים בתהליך עם ליאב ברודש.',
 }

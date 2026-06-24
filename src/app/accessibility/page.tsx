@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
+  alternates: { canonical: '/accessibility' },
   title: 'הצהרת נגישות - NUTZ Calisthenics',
   description: 'הצהרת הנגישות של NUTZ Calisthenics - מחויבות לנגישות בהתאם לת"י 5568 ו-WCAG 2.0 AA.',
 }

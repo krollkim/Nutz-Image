@@ -10,6 +10,7 @@ import { serviceJsonLd } from '@/lib/schema'
 import { methodCopy } from '@/data/copy'
 
 export const metadata: Metadata = {
+  alternates: { canonical: '/method' },
   title: 'השיטה לשליטה - NUTZ Calisthenics',
   description: 'שלושה שלבים: אבחון אישי, תוכנית מותאמת, שליטה בגוף. מסלולי 90, 180 ו-360 ימים עם ליווי צמוד מליאב.',
 }

@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import Button from '@/components/ui/Button'
+import { INSTAGRAM_URL } from '@/lib/site'
 
 export default function Footer() {
   return (
@@ -95,7 +96,7 @@ export default function Footer() {
               נגישות
             </Link>
             <a
-              href="https://www.instagram.com/liavbrodash"
+              href={INSTAGRAM_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-text-primary transition-colors"

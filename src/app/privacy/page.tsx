@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
+  alternates: { canonical: '/privacy' },
   title: 'מדיניות פרטיות - NUTZ Calisthenics',
   description: 'מדיניות הפרטיות של NUTZ Calisthenics - איזה מידע נאסף, כיצד הוא נשמר ומשמש, וזכויותיך.',
 }

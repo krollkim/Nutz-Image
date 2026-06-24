@@ -1,4 +1,4 @@
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 import { Rubik, Bebas_Neue } from 'next/font/google'
 import '@/styles/globals.css'
 import Header from '@/components/layout/Header'
@@ -20,11 +20,15 @@ const bebasNeue = Bebas_Neue({
   variable: '--font-bebas',
 })
 
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+}
+
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: 'NUTZ Calisthenics',
   description: 'קליסטניקס אונליין עם ליאב ברודש',
-  viewport: 'width=device-width, initial-scale=1',
   openGraph: {
     type: 'website',
     locale: 'he_IL',

@@ -3,6 +3,7 @@ import ContactForm from '@/components/sections/ContactForm'
 import FAQ from '@/components/sections/FAQ'
 
 export const metadata: Metadata = {
+  alternates: { canonical: '/contact' },
   title: 'הגשת מועמדות - NUTZ Calisthenics',
   description: 'מוכן להתחיל תהליך קליסטניקס באונליין? מלא את הטופס וליאב יחזור אליך תוך 24 שעות.',
 }

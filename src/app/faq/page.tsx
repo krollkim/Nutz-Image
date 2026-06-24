@@ -8,6 +8,7 @@ import JsonLd from '@/components/seo/JsonLd'
 import { faqPageJsonLd } from '@/lib/schema'
 
 export const metadata: Metadata = {
+  alternates: { canonical: '/faq' },
   title: 'שאלות נפוצות - NUTZ Calisthenics',
   description: 'תשובות על תהליכי הקליסטניקס, ליווי אונליין, מחירים, זמנים, ואיך להתחיל עם ליאב ברודש.',
 }

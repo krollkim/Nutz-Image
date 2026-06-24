@@ -10,15 +10,17 @@ interface AboutProps {
   mode?: 'teaser' | 'full'
 }
 
+// width/height = each file's real pixel dimensions → next/image keeps the true
+// aspect ratio (no cropping) while optimizing + lazy-loading.
 const CERTIFICATES = [
-  { src: '/images/certificates/certificate1.jpeg', alt: 'תעודת הסמכה מקצועית של ליאב ברודש — NUTZ (1)' },
-  { src: '/images/certificates/certificate2.jpeg', alt: 'תעודת הסמכה מקצועית של ליאב ברודש — NUTZ (2)' },
-  { src: '/images/certificates/certificate3.jpeg', alt: 'תעודת הסמכה מקצועית של ליאב ברודש — NUTZ (3)' },
-  { src: '/images/certificates/certificate4.jpeg', alt: 'תעודת הסמכה מקצועית של ליאב ברודש — NUTZ (4)' },
-  { src: '/images/certificates/certificate5.jpeg', alt: 'תעודת הסמכה מקצועית של ליאב ברודש — NUTZ (5)' },
-  { src: '/images/certificates/certificate6.jpeg', alt: 'תעודת הסמכה מקצועית של ליאב ברודש — NUTZ (6)' },
-  { src: '/images/certificates/certificate7.jpeg', alt: 'תעודת הסמכה מקצועית של ליאב ברודש — NUTZ (7)' },
-  { src: '/images/certificates/certificate8.jpeg', alt: 'תעודת הסמכה מקצועית של ליאב ברודש — NUTZ (8)' },
+  { src: '/images/certificates/cert_personal_trainer.png', width: 570, height: 822, alt: 'תעודת מאמן אישי כושר של ליאב ברודש' },
+  { src: '/images/certificates/cert_functional_training.png', width: 532, height: 765, alt: 'תעודת אימון פונקציונלי (בית הספר למקצועות הספורט) של ליאב ברודש' },
+  { src: '/images/certificates/cert_fitness_health.png', width: 576, height: 759, alt: 'תעודת מדריך כושר גופני ובריאות של ליאב ברודש' },
+  { src: '/images/certificates/cert_lymphatic_cupping.png', width: 577, height: 832, alt: 'תעודת עיסוי לימפטי וכוסות רוח של ליאב ברודש' },
+  { src: '/images/certificates/cert_sportstherapy_deshadow.png', width: 547, height: 775, alt: 'תעודת ספורטתרפיה ועיסוי רפואי בכיר של ליאב ברודש' },
+  { src: '/images/certificates/cert_massage_diploma.png', width: 628, height: 803, alt: 'דיפלומת עיסוי רפואי מוסמך (Moreno World Massage College) של ליאב ברודש' },
+  { src: '/images/certificates/cert_massage_therapist_en_deshadow.png', width: 1155, height: 859, alt: 'תעודת Massage Therapist (Moshe Moreno College) של ליאב ברודש' },
+  { src: '/images/certificates/certificate1.jpeg', width: 1184, height: 667, alt: 'תעודת השתלמות גמישות למאמנים (Mor PhysioYoga) של ליאב ברודש' },
 ]
 
 export default function About({ mode = 'teaser' }: AboutProps) {
@@ -71,6 +73,22 @@ export default function About({ mode = 'teaser' }: AboutProps) {
           </>
         ) : (
           <>
+            {/* GEO: explicit, citable definitions */}
+            <div className="mb-12 space-y-8">
+              <div>
+                <h3 className="font-rubik text-xl md:text-2xl font-bold text-gold-bright mb-3">מה זה NUTZ?</h3>
+                <p className="font-rubik text-muted text-base leading-relaxed">
+                  NUTZ היא שיטת ליווי קליסטניקס אונליין 1:1 של ליאב ברודש - לא תוכנית PDF גנרית, אלא ליווי אישי אמיתי שמלמד אותך לשלוט בגוף שלך מהשורש עד הצמרת. השיטה משלבת תוכנית אימון מותאמת אישית, אימון מבוסס-שיטה, וידע עמוק בספורטתרפיה ובטיפול - וזה מה שמבדל את ליאב ממאמן רגיל: לא רק לבנות כוח, אלא להבין, לנמק ולשקם את הגוף מהשורש.
+                </p>
+              </div>
+              <div>
+                <h3 className="font-rubik text-xl md:text-2xl font-bold text-gold-bright mb-3">למי השיטה מתאימה?</h3>
+                <p className="font-rubik text-muted text-base leading-relaxed">
+                  לכל הרמות - ממתחיל מוחלט שלא התאמן מעולם ("מאפס", כלומר נקודת התחלה) ועד מתאמן קליסטניקס מתקדם ומתחרים. כל תהליך נפתח באבחון אישי שממפה את היכולות, החולשות ונקודת הפתיחה שלך - ובונה את התוכנית בדיוק משם, כך שהיא מתאימה לאן שאתה נמצא היום.
+                </p>
+              </div>
+            </div>
+
             <div className="mb-12 space-y-6">
               {aboutCopy.bio.map((paragraph, idx) => (
                 <p key={idx} className="font-rubik text-muted leading-relaxed">
@@ -80,7 +98,7 @@ export default function About({ mode = 'teaser' }: AboutProps) {
             </div>
 
             <Card className="mb-12">
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center mb-8">
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
                 {aboutCopy.stats.map((stat, idx) => (
                   <div key={idx}>
                     <p className="font-bebas text-3xl text-amber">{stat.value}{stat.suffix || ''}</p>
@@ -91,7 +109,10 @@ export default function About({ mode = 'teaser' }: AboutProps) {
             </Card>
 
             <Card className="mb-12">
-              <h3 className="font-rubik text-2xl font-bold text-text-primary mb-6">תעודות והסמכות</h3>
+              <h3 className="font-rubik text-2xl font-bold text-text-primary mb-4">תעודות והסמכות</h3>
+              <p className="font-rubik text-muted text-base leading-relaxed mb-8">
+                ההסמכה של ליאב חוצה שני עולמות - אימון וטיפול - וזה בדיוק מה שמייחד את השיטה: גם לבנות גוף וגם לשקם אותו. בצד האימון: מאמן כושר אישי, מדריך כושר גופני ובריאות, ומוסמך באימון פונקציונלי, עם 14+ שנות קליסטניקס ורקורד תחרותי (מקום 3 בארץ, 2022). בצד הטיפול: ספורטתרפיה ועיסוי רפואי בכיר, דיפלומת עיסוי רפואי מוסמך (Moreno World Massage College), עיסוי לימפטי וכוסות רוח, והשתלמות גמישות למאמנים. הטיפולים אינם מוצר נפרד - הם כלי בתוך השיטה.
+              </p>
 
               <div
                 style={{
@@ -115,9 +136,12 @@ export default function About({ mode = 'teaser' }: AboutProps) {
                       padding: '8px',
                     }}
                   >
-                    <img
+                    <Image
                       src={cert.src}
                       alt={cert.alt}
+                      width={cert.width}
+                      height={cert.height}
+                      sizes="(max-width: 767px) 100vw, (max-width: 1023px) 45vw, 30vw"
                       style={{
                         width: '100%',
                         height: 'auto',

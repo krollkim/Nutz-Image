@@ -11,6 +11,7 @@ import ScrollReveal from '@/components/ui/ScrollReveal'
 import { homeCopy } from '@/data/copy'
 
 export const metadata: Metadata = {
+  alternates: { canonical: '/' },
   title: 'NUTZ - להתחיל ולהתקדם בקליסטניקס באונליין',
   description: 'תהליכי קליסטניקס אונליין עם ליאב ברודש. ליווי 1:1 אישי, שיטה מוכחת, 300+ תהליכים מלאים. הגש מועמדות.',
 }

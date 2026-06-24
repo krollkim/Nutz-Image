@@ -1,11 +1,10 @@
 /**
  * Central site config — single source of truth for absolute URLs and brand data.
  *
- * ⚠️ SITE_URL is a PLACEHOLDER. Replace with the final production domain on
- * deploy — every absolute URL (schema @id, sitemap, canonical, OG) derives from
- * it, so changing this one line updates them all.
+ * SITE_URL is the canonical production origin (no trailing slash, non-www).
+ * Every absolute URL (schema @id, sitemap, canonical, OG) derives from it.
  */
-export const SITE_URL = 'https://www.nutz.co.il' // TODO: replace with final domain on deploy
+export const SITE_URL = 'https://liavbrodash.com'
 
 export const SITE_NAME = 'NUTZ Calisthenics'
 export const SITE_SHORT_NAME = 'NUTZ'

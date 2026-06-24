@@ -48,7 +48,10 @@ _עיצוב (פאזות 1-3) הושלם. נפתחה קטגוריית **SEO + GEO
 #### 🔴 עדיפות גבוהה (השפעה גבוהה)
 - [x] **Structured Data (JSON-LD)** ✅ **מאומת** — `Organization`+`Person`+`WebSite` (גלובלי, `@graph` ב-layout), `Service`+5 `Offers` (דף method), `FAQPage`+18 שאלות (דף faq). קבצים: `lib/site.ts` (SITE_URL בר-עדכון), `lib/schema.ts`, `components/seo/JsonLd.tsx`. **אומת ב-validator.schema.org: 0 errors, 0 warnings בכל 3 הבלוקים.**
 - [x] **Open Graph + Twitter cards + og:image + `metadataBase`** ✅ — ב-`layout.tsx`: `metadataBase: new URL(SITE_URL)`, `openGraph` (he_IL, siteName, תיאור, תמונה) + `twitter` (`summary`). OG image = הלוגו ב-`public/images/og/og-image.jpg` (JPEG 1036×1168). ניתן להחלפה בעתיד לעיצוב 1200×630 ייעודי.
-- [ ] **sitemap.xml + robots.txt + canonical** — אין אף אחד. (`app/sitemap.ts`, `app/robots.ts`, `alternates.canonical`). *(metadataBase כבר קיים)*
+- [x] **sitemap.xml + robots.txt + canonical** ✅ — `app/sitemap.ts` (9 דפים), `app/robots.ts` (allow all + sitemap + host), ו-`alternates.canonical` ב-9 הדפים. הכל נגזר מ-SITE_URL.
+- [x] **SITE_URL סופי** ✅ — `https://liavbrodash.com` (קנוני, בלי www). הוחלף ב-`lib/site.ts`; אומת שאין שאריות `nutz.co.il`. Footer עודכן להשתמש ב-`INSTAGRAM_URL` מ-site.ts (במקום hard-coded). viewport הועבר ל-`viewport` export נפרד (build נקי).
+
+> 🟢 **קטגוריית 🔴 (עדיפות גבוהה) הושלמה במלואה** — Structured Data + OG + sitemap/robots/canonical, כולל כל התלויי-דומיין. הדומיין הסופי: **https://liavbrodash.com**.
 
 #### 🟡 עדיפות בינונית
 - [ ] **תיקון H1** — דף `contact` חסר H1 (ContactForm משתמש ב-H2); דף `faq` עם כפילות H1/H2 (אותו טקסט "שאלות נפוצות").
@@ -99,11 +102,11 @@ _עיצוב (פאזות 1-3) הושלם. נפתחה קטגוריית **SEO + GEO
 
 ## 🎯 הבא
 
-1. **🔴 SEO/GEO עדיפות גבוהה** — Structured Data (JSON-LD) → ואז OG/Twitter+og:image → ואז sitemap/robots/canonical.
-2. **🟡 השלמות בינוניות** — תיקון H1 (contact/faq), אופטימיזציית תעודות ל-next/image.
-3. **🟢 תוכן GEO** — הגדרות מפורשות (דורש קלט מליאב).
+1. **🟡 אופטימיזציית 8 התעודות** — מעבר מ-`<img>` ל-`next/image` (lazy-load + אופטימיזציה). *(תיקון H1 + alt כבר בוצעו)*
+2. **🟢 תוכן GEO** — הגדרות מפורשות "מה זה NUTZ"/"למי מתאים" + הסמכות כטקסט (דורש קלט מליאב).
+3. **✅ אימות סופי** — Rich Results Test, בדיקת OG בשיתוף, sitemap/robots נגישים בפרודקשן.
 4. *(אופציונלי)* פאזה 4 wow / Parallax Hero.
 
 ---
 
-**סטטוס:** ✅ **פאזות 1-3 הושלמו** (עיצוב) + **תוכן משפטי + תוסף נגישות + alt עברי**. פאזה 4 נדחית/אופציונלית. 🔍 **SEO/GEO:** אבחון בוצע, 🔴 עדיפות גבוהה (schema/OG/sitemap) **עדיין ממתינה**.
+**סטטוס:** ✅ **פאזות 1-3 הושלמו** (עיצוב) + **משפטי/נגישות/alt**. 🔴 **קטגוריית SEO/GEO עדיפות גבוהה הושלמה במלואה** (Structured Data מאומת + OG + sitemap/robots/canonical + דומיין סופי **liavbrodash.com**). נותר: 🟡 אופטימיזציית תעודות, 🟢 תוכן GEO (קלט מליאב), ואימות פרודקשן.

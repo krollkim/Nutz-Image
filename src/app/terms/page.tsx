@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
+  alternates: { canonical: '/terms' },
   title: 'תנאי שימוש - NUTZ Calisthenics',
   description: 'תנאי השימוש של NUTZ Calisthenics - תיאור השירות, תשלום, ביטולים, אחריות וקניין רוחני.',
 }
