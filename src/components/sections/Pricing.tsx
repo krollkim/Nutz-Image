@@ -19,7 +19,7 @@ export default function Pricing() {
           </p>
         </ScrollReveal>
 
-        <StaggerReveal className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
+        <StaggerReveal columns={5} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
           {plans.map((plan) => (
             <Card
               key={plan.id}

@@ -6,29 +6,32 @@ import { gsap } from '@/lib/gsap'
 interface StaggerRevealProps {
   children: ReactNode
   className?: string
-  /** Delay between each child reveal (seconds). */
+  /** Grid columns — resets the stagger each row (LP-style cascade). */
+  columns?: number
+  /** Delay between cards within a row (seconds). LP uses 0.15. */
   stagger?: number
 }
 
 /**
- * Reveals its direct children in a staggered "wave" (fade-up) when scrolled
- * into view. Use as the grid/flex container itself (pass the layout classes via
- * `className`) so its children are the cards.
+ * Card "wave" reveal — ported 1:1 from the NUTZ-LP landing page.
  *
- * Trigger: a plain IntersectionObserver (fires once when ~15% of the section is
- * visible), not GSAP ScrollTrigger — this matches AnimatedCounter and avoids
- * stale-position / refresh issues that made the reveal feel janky on the page.
+ * Mechanism (identical to LP): each card has its OWN GSAP ScrollTrigger
+ * (`trigger: card`, `start: 'top 88%'`, `toggleActions: 'play none none none'`).
+ * ScrollTrigger is driven by GSAP's ticker so it stays glued to the scroll and
+ * feels smooth — the same engine our (smooth) ScrollReveal uses. Earlier this
+ * component used an IntersectionObserver, which felt detached/"stuck".
  *
- * RTL note: GSAP staggers in DOM order (0,1,2…). In an RTL grid the first DOM
- * child sits on the right, so the default order produces a natural right→left
- * wave — matching Hebrew reading direction. No reversal needed.
+ * Within a row the cards cascade by `(i % columns) * stagger`, so the delay
+ * resets each row (no long cumulative tail).
  *
- * Performance: animates transform + opacity only (no layout thrashing), once.
+ * RTL: cards animate in DOM order; first DOM child sits right → wave flows
+ * right→left (Hebrew reading direction).
  */
 export default function StaggerReveal({
   children,
   className = '',
-  stagger = 0.28,
+  columns = 3,
+  stagger = 0.15,
 }: StaggerRevealProps) {
   const ref = useRef<HTMLDivElement>(null)
 
@@ -36,35 +39,28 @@ export default function StaggerReveal({
     const el = ref.current
     if (!el) return
 
-    const items = Array.from(el.children)
+    const items = Array.from(el.children) as HTMLElement[]
     if (items.length === 0) return
 
-    // Initial hidden state up front so cards never flash visible (FOUC) before
-    // the observer fires.
-    gsap.set(items, { opacity: 0, y: 36 })
+    const ctx = gsap.context(() => {
+      items.forEach((card, i) => {
+        gsap.from(card, {
+          scrollTrigger: {
+            trigger: card,
+            start: 'top 88%',
+            toggleActions: 'play none none none',
+          },
+          duration: 0.7,
+          y: 50,
+          opacity: 0,
+          ease: 'power2.out',
+          delay: (i % columns) * stagger,
+        })
+      })
+    }, el)
 
-    let played = false
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting && !played) {
-          played = true
-          gsap.to(items, {
-            opacity: 1,
-            y: 0,
-            duration: 0.7,
-            ease: 'power2.out',
-            stagger, // DOM order → right→left in RTL
-          })
-          observer.disconnect() // once
-        }
-      },
-      { threshold: 0.15 }
-    )
-
-    observer.observe(el)
-
-    return () => observer.disconnect()
-  }, [stagger])
+    return () => ctx.revert()
+  }, [columns, stagger])
 
   return (
     <div ref={ref} className={className}>

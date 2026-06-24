@@ -22,7 +22,7 @@ export default function Testimonials({ mode = 'teaser' }: TestimonialsProps) {
           </h2>
         </ScrollReveal>
 
-        <StaggerReveal className={`grid ${
+        <StaggerReveal columns={mode === 'full' ? 3 : 2} className={`grid ${
           mode === 'full' ? 'grid-cols-1 md:grid-cols-3' : 'grid-cols-1 md:grid-cols-2'
         } gap-6 mb-12`}>
           {displayedTestimonials.map((testimonial) => (
