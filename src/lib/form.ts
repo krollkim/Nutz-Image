@@ -28,9 +28,17 @@ export async function submitForm(data: FormData): Promise<SubmitResult> {
         name: data.name,
         phone: data.phone,
         plan: data.plan,
+        'מסלול': data.plan, // hedge: also send under the Hebrew column name
         experience: data.experience,
         message: data.message,
-        timestamp: new Date().toISOString(),
+        timestamp: new Date().toLocaleString('he-IL', {
+          timeZone: 'Asia/Jerusalem',
+          day: '2-digit',
+          month: '2-digit',
+          year: 'numeric',
+          hour: '2-digit',
+          minute: '2-digit',
+        }),
       }),
     })
     return { success: true }
