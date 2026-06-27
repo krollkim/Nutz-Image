@@ -11,14 +11,30 @@ export interface SubmitResult {
   error?: string
 }
 
+// Shared Google Apps Script endpoint (writes leads to a managed Google Sheet).
+const GOOGLE_SHEETS_URL =
+  'https://script.google.com/macros/s/AKfycbzjTFrHgEG01mmEsZgLy-LVrkUlrMOqdrHyUsG-mSOsXzZYXlicNJP7-ubRocYujSIY/exec'
+
 export async function submitForm(data: FormData): Promise<SubmitResult> {
-  // TODO: Implement Google Sheets submission
-  // This will integrate with Google Sheets API to store form submissions
   try {
-    // Placeholder implementation
-    console.log('Form submission:', data)
+    await fetch(GOOGLE_SHEETS_URL, {
+      method: 'POST',
+      // Apps Script returns no CORS headers — no-cors is required, but means the
+      // response is opaque (unreadable). We treat a resolved fetch as success.
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        'משפך': 'אתר תדמית', // funnel/source label → "משפך" column in the sheet
+        name: data.name,
+        phone: data.phone,
+        plan: data.plan,
+        experience: data.experience,
+        message: data.message,
+        timestamp: new Date().toISOString(),
+      }),
+    })
     return { success: true }
-  } catch (error) {
+  } catch {
     return { success: false, error: 'Failed to submit form' }
   }
 }
