@@ -1,5 +1,5 @@
 /**
- * Central site config — single source of truth for absolute URLs and brand data.
+ * Central site config - single source of truth for absolute URLs and brand data.
  *
  * SITE_URL is the canonical production origin (no trailing slash, non-www).
  * Every absolute URL (schema @id, sitemap, canonical, OG) derives from it.
@@ -9,7 +9,7 @@ export const SITE_URL = 'https://liavbrodash.com'
 export const SITE_NAME = 'NUTZ Calisthenics'
 export const SITE_SHORT_NAME = 'NUTZ'
 export const SITE_DESCRIPTION =
-  'ליווי ואימון קליסטניקס אונליין 1:1 עם ליאב ברודש — שיטה אישית, מרחוק.'
+  'ליווי ואימון קליסטניקס אונליין 1:1 עם ליאב ברודש - שיטה אישית, מרחוק.'
 
 export const COACH_NAME = 'ליאב ברודש'
 export const CONTACT_EMAIL = 'egozcali@gmail.com'
