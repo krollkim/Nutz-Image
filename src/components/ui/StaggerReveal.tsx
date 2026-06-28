@@ -44,6 +44,11 @@ export default function StaggerReveal({
 
     const ctx = gsap.context(() => {
       items.forEach((card, i) => {
+        // The Card has `transition-all` (for hover). Disable it during the GSAP
+        // entrance so the CSS transition doesn't fight GSAP's per-frame updates
+        // on opacity/transform (that conflict caused the "two-stage" feel).
+        // Restored on complete so hover keeps working.
+        card.style.transition = 'none'
         gsap.from(card, {
           scrollTrigger: {
             trigger: card,
@@ -51,10 +56,13 @@ export default function StaggerReveal({
             toggleActions: 'play none none none',
           },
           duration: 0.7,
-          y: 50,
+          y: 30,
           opacity: 0,
           ease: 'power2.out',
           delay: (i % columns) * stagger,
+          onComplete: () => {
+            card.style.transition = ''
+          },
         })
       })
     }, el)

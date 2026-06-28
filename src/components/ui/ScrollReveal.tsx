@@ -15,20 +15,25 @@ export default function ScrollReveal({ children, className = '' }: ScrollRevealP
     const el = ref.current
     if (!el) return
 
-    gsap.fromTo(
-      el,
-      { opacity: 0, y: 30 },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 0.7,
-        scrollTrigger: {
-          trigger: el,
-          start: 'top 85%',
-          once: true,
-        },
-      }
-    )
+    const ctx = gsap.context(() => {
+      gsap.fromTo(
+        el,
+        { opacity: 0, y: 30 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.55,
+          ease: 'power2.out',
+          scrollTrigger: {
+            trigger: el,
+            start: 'top 85%',
+            once: true,
+          },
+        }
+      )
+    }, el)
+
+    return () => ctx.revert()
   }, [])
 
   return (

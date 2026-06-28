@@ -5,6 +5,7 @@ import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
 import FloatingCTA from '@/components/layout/FloatingCTA'
 import AccessibilityWidget from '@/components/layout/AccessibilityWidget'
+import GSAPInit from '@/components/layout/GSAPInit'
 import JsonLd from '@/components/seo/JsonLd'
 import { siteGraph } from '@/lib/schema'
 import { SITE_URL, SITE_NAME, SITE_DESCRIPTION, absoluteUrl } from '@/lib/site'
@@ -73,6 +74,7 @@ export default function RootLayout({
     <html lang="he" dir="rtl" suppressHydrationWarning>
       <body className={`${rubik.variable} ${bebasNeue.variable}`}>
         <JsonLd data={siteGraph} />
+        <GSAPInit />
         <Header />
         {children}
         <Footer />
